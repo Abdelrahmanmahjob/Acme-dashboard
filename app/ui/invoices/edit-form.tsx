@@ -22,7 +22,12 @@ export default function EditInvoiceForm({
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id)
 
   return (
-    <form action={updateInvoiceWithId}>
+    // { message: null, errors: {} }
+    <form
+      action={async (formData: FormData) => {
+        await updateInvoice(invoice.id, formData)
+      }}
+    >
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
